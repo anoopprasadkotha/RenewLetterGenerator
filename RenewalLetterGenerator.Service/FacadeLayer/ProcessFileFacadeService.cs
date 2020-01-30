@@ -1,20 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Web;
-using RenewalLetterGenerator.Interfaces;
-using RenewalLetterGenerator.ModelBinder;
+﻿using RenewalLetterGenerator.Interfaces;
+using RenewalLetterGenerator.Service.ModelBinder;
 using RenewalLetterGenerator.Models;
+using System.Collections.Generic;
+using System.Web;
 
-namespace RenewalLetterGenerator.ServiceLayer
+namespace RenewalLetterGenerator.Service.ServiceLayer
 {
     public class ProcessFileFacadeService : IProcessFile
     {
 
         private readonly ICSVReader _cSVReader;
         private readonly ICreateRenewLetter  _createRenewLetter ;
-        public ProcessFileFacadeService(ICSVReader cSVReader, ICreateRenewLetter createRenewLetter)
+        private readonly ILogger _logger;
+
+        public ProcessFileFacadeService(ICSVReader cSVReader, ICreateRenewLetter createRenewLetter,ILogger logger)
         {
             _cSVReader = cSVReader;
             _createRenewLetter = createRenewLetter;
+            _logger = logger;
         }
 
         public bool GenerateRenewalLetters(List<ViewModel> viewModel)
@@ -45,7 +48,7 @@ namespace RenewalLetterGenerator.ServiceLayer
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 //used to bind the values and if the row is corrupted  
-                IndividualMember = ViewModelBinder.Bind(dataTable, i);
+                IndividualMember = ViewModelBinder.Bind(dataTable, i,_logger);
 
                 if ((IndividualMember != null))
                 {

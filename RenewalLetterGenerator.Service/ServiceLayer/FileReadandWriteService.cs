@@ -1,28 +1,28 @@
-﻿using System.Configuration;
-using System.IO;
+﻿using System.IO;
+using System.Net.Http;
 using System.Text;
-using System.Web;
-using RenewalLetterGenerator.Helper;
 using RenewalLetterGenerator.Interfaces;
 using RenewalLetterGenerator.Models;
 
-namespace RenewalLetterGenerator.ServiceLayer
+namespace RenewalLetterGenerator.Service.ServiceLayer
 {
     public class FileReadandWriteService : IFileReadAndWriteService
     {
-        public static string destinationFilePath = GenericHelper.GetValueFromWebConfig("Destination_File_Path");
+
+        private const string destinationFilePath = @"D:\";
+        private const string templatePath= @"\Content\templateDoc.txt";
 
         /// <summary>
-        /// 
+        /// Create the renewal letter based on the ViewModel and template file passed
         /// </summary>
         /// <param name="viewModel"></param>
         /// <param name="file"></param>
-        /// <returns></returns>
+        /// <returns>Wether new file was generated or not </returns>
         public bool CreateFile(ViewModel viewModel, string file)
         {
             bool createdNow=false;
 
-            // C: \Users\Anoop Prasad Kotha\source\repos\CodingTest\CodingTest\Models\CustomerDetails.cs
+            //Creating file  path ,file name by concatinating Id,FirstName and SurName
             string path = destinationFilePath + viewModel.MemDetails.Id + viewModel.MemDetails.FirstName+viewModel.MemDetails.SurName + ".txt";
 
             //Create the file only if it doesnt exists.
@@ -38,11 +38,18 @@ namespace RenewalLetterGenerator.ServiceLayer
             return createdNow;
         }
 
-
+        /// <summary>
+        /// Readind the value from Template in the solution
+        /// </summary>
+        /// <returns>Template as a string</returns>
         public StringBuilder ReadFromTemplate()
         {
-            var path = @"~/Content/templateDoc.txt";
-            StreamReader sr = new StreamReader(HttpContext.Current.Server.MapPath(path));
+            //Getting path to read the template
+            var appDomain = System.AppDomain.CurrentDomain;
+            var path =appDomain.BaseDirectory+templatePath;
+
+            //Reading the template from the Content folder
+            StreamReader sr = new StreamReader(path);
             string streamData = sr.ReadToEnd();
             sr.Close();
             return new StringBuilder(streamData);

@@ -7,13 +7,13 @@
     ViewBag.Title = "Upload File";
 }
 
-<h2>Upload File</h2>
+<h2>Renewal Letter Generator </h2>
 
-<p>Please Upload the format Similar to the attached</p>
+<p>Please Upload the Same format CSV</p>
 
-<p>Each row is validated with standard input formats please find the example records in the attached Csv file</p>
+<p>Each row is validated with standard input formats, if they dont match the values are skipped and logged in  a txt file name Invalid Data</p>
 
-<p>The files will be generated to the location  </p>
+<p>The files will be generated to the location D://  </p>
 
 @using (Html.BeginForm("Upload", "Home", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -27,6 +27,7 @@
     <div class="form-group">
         <input type="submit" value="Upload" class="btn btn-default" />
     </div>
+
     if (Model != null)
     {
         <table class="table">

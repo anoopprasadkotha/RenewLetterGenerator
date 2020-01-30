@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace RenewalLetterGenerator.ServiceLayer
+namespace RenewalLetterGenerator.Service.ServiceLayer
 {
     public class CSVReaderService : ICSVReader
     {

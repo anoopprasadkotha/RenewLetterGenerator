@@ -1,21 +1,19 @@
 ﻿using RenewalLetterGenerator.Helper;
+using RenewalLetterGenerator.Interfaces;
 using RenewalLetterGenerator.Models;
 using System;
 using System.Data;
 using System.Text;
 
-namespace RenewalLetterGenerator.ModelBinder
+namespace RenewalLetterGenerator.Service.ModelBinder
 {
     public class ViewModelBinder
     {
-        // private static Logger _logger = new Logger();
 
-
-
-        public static ViewModel Bind(DataTable csvTable, int i)
+        public static ViewModel Bind(DataTable csvTable, int i, ILogger logger)
         {
             var viewModel = new ViewModel();
-            if (ValidateRow(csvTable, i))
+            if (ValidateRow(csvTable, i, logger))
             {
                 viewModel = new ViewModel()
                 {
@@ -45,23 +43,27 @@ namespace RenewalLetterGenerator.ModelBinder
         /// <param name="csvTable"></param>
         /// <param name="i"></param>
         /// <returns></returns>
-        public static bool ValidateRow(DataTable csvTable, int i)
+        public static bool ValidateRow(DataTable csvTable, int i,ILogger logger)
         {
             var str = new StringBuilder(String.Format("The data in the row{0} is not valid and fields which are not valid are ", i));
 
             bool isValid;
             int id;
             float premium;
+
             isValid = Int32.TryParse((csvTable.Rows[i][0].ToString()), out id);
             if (!Int32.TryParse((csvTable.Rows[i][0].ToString()), out id)) str.Append(String.Format("ID ={0},", (csvTable.Rows[i][0].ToString())));
+
             isValid = isValid && float.TryParse((csvTable.Rows[i][5].ToString()), out premium);
-            if (!float.TryParse((csvTable.Rows[i][0].ToString()), out premium)) str.Append(String.Format("PayoutAmount ={0} ,", (csvTable.Rows[i][0].ToString())));
+            if (!float.TryParse((csvTable.Rows[i][0].ToString()), out premium)) str.Append(String.Format("PayoutAmount ={0} ,", (csvTable.Rows[i][5].ToString())));
+
             isValid = isValid && float.TryParse((csvTable.Rows[i][6].ToString()), out premium);
-            if (!float.TryParse((csvTable.Rows[i][6].ToString()), out premium)) str.Append(String.Format("AnnualPremium={0}", (csvTable.Rows[i][0].ToString())));
+            if (!float.TryParse((csvTable.Rows[i][6].ToString()), out premium)) str.Append(String.Format("AnnualPremium={0}", (csvTable.Rows[i][6].ToString())));
+           
             //after checking the data is invalid log  the stringbuilder in log
             if (!isValid)
             {
-                // _logger.Log(str.ToString());
+               logger.Log(str.ToString());
             }
             return isValid;
         }

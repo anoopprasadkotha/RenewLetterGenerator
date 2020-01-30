@@ -1,10 +1,9 @@
-﻿using RenewalLetterGenerator.Helper;
-using RenewalLetterGenerator.Interfaces;
+﻿using RenewalLetterGenerator.Interfaces;
 using RenewalLetterGenerator.Models;
-using RenewalLetterGenerator.ServiceLayer;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace RenewalLetterGenerator.Controllers
 {
@@ -15,14 +14,11 @@ namespace RenewalLetterGenerator.Controllers
         public HomeController(IProcessFile processFile)
         {
             _processFile = processFile;
-            ////using property injection need
-            //_processFile = new ProcessFileFacadeService();
+            
         }
     
         public ActionResult Upload()
         {
-            //this view bag data is used to display the destination set in web config 
-            ViewBag.DestinationPath = GenericHelper.GetValueFromWebConfig("Destination_File_Path");
 
             return View();
         }
@@ -31,8 +27,6 @@ namespace RenewalLetterGenerator.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Upload(HttpPostedFileBase upload)
         {
-            //this view bag data is used to display the destination set in web config 
-            ViewBag.DestinationPath = GenericHelper.GetValueFromWebConfig("Destination_File_Path");
 
             if (ModelState.IsValid)
             {
@@ -61,6 +55,7 @@ namespace RenewalLetterGenerator.Controllers
 
                             MemberDetails.Add(member.MemDetails);
                         }
+                        ViewBag.AnyFileNewlyGenerated = MemberDetails.Any(x => x.IsGeneratedNow == true);
                         return View(MemberDetails);
                     }
                     else

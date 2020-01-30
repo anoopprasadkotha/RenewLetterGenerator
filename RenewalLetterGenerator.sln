@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewalLetterGenerator", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewalLetterGeneratorUnitTests", "RenewalLetterGeneratorUnitTests\RenewalLetterGeneratorUnitTests.csproj", "{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewLetterGenerator.Interfaces", "RenewLetterGenerator.Interfaces\RenewLetterGenerator.Interfaces.csproj", "{696E7DA6-1270-4101-8B0A-E3F0396B872F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewLetterGenerator.Models", "RenewLetterGeneratorModels\RenewLetterGenerator.Models.csproj", "{9FBC806A-B0B9-41BD-8EED-8ACBB61E134C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewalLetterGenerator.Service", "RenewalLetterGenerator.Service\RenewalLetterGenerator.Service.csproj", "{5943EF44-75BB-4798-92ED-B57777430A17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{696E7DA6-1270-4101-8B0A-E3F0396B872F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{696E7DA6-1270-4101-8B0A-E3F0396B872F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{696E7DA6-1270-4101-8B0A-E3F0396B872F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{696E7DA6-1270-4101-8B0A-E3F0396B872F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FBC806A-B0B9-41BD-8EED-8ACBB61E134C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FBC806A-B0B9-41BD-8EED-8ACBB61E134C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FBC806A-B0B9-41BD-8EED-8ACBB61E134C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FBC806A-B0B9-41BD-8EED-8ACBB61E134C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5943EF44-75BB-4798-92ED-B57777430A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5943EF44-75BB-4798-92ED-B57777430A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5943EF44-75BB-4798-92ED-B57777430A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5943EF44-75BB-4798-92ED-B57777430A17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

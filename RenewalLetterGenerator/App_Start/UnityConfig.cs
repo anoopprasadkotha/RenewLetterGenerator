@@ -1,5 +1,5 @@
 using RenewalLetterGenerator.Interfaces;
-using RenewalLetterGenerator.ServiceLayer;
+using RenewalLetterGenerator.Service.ServiceLayer;
 using System.Web.Mvc;
 using Unity;
 using Unity.Mvc5;
@@ -20,7 +20,7 @@ namespace RenewalLetterGenerator
             container.RegisterType<ICSVReader, CSVReaderService>();
             container.RegisterType<ICreateRenewLetter, CreateRenewLetterFacadeService>();
             container.RegisterType<IFileReadAndWriteService, FileReadandWriteService>();
-
+            container.RegisterType<ILogger, LoggerService>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -22,8 +22,6 @@ namespace RenewalLetterGenerator.Helper
         private const string TotalCost = "{Annual Premium plus Credit Charge}";
         #endregion
 
-
-
         /// <summary>
         /// Calculate the variables for a member for a given annual premium.
         /// </summary>
@@ -32,7 +30,6 @@ namespace RenewalLetterGenerator.Helper
         // need to rename with a MeaningFullName
         public static RenewalModel CalculatePremiumVariables(Double annualPremium)
         {
-
 
             //credit charge calculation
             var creditCharge = RoundUp(annualPremium * .05, 2);
@@ -124,10 +121,6 @@ namespace RenewalLetterGenerator.Helper
             return File.ToString();
         }
 
-        public static string  GetValueFromWebConfig (string appKey)
-        {
-            //return ConfigurationManager.AppSettings.Keys.Equals(appKey) ? ConfigurationManager.AppSettings[appKey] : "";
-            return ConfigurationManager.AppSettings[appKey];
-        }
+
     }
 }

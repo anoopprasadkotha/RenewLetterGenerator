@@ -2,7 +2,7 @@
 using RenewalLetterGenerator.Interfaces;
 using RenewalLetterGenerator.Models;
 
-namespace RenewalLetterGenerator.ServiceLayer
+namespace RenewalLetterGenerator.Service.ServiceLayer
 {
     public class CreateRenewLetterFacadeService : ICreateRenewLetter
     {
