@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewalLetterGenerator", "RenewalLetterGenerator\RenewalLetterGenerator.csproj", "{F3BD9E34-1540-4B7C-BA19-4CDC2270E7FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewalLetterGeneratorUnitTests", "RenewalLetterGeneratorUnitTests\RenewalLetterGeneratorUnitTests.csproj", "{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3BD9E34-1540-4B7C-BA19-4CDC2270E7FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BD9E34-1540-4B7C-BA19-4CDC2270E7FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BD9E34-1540-4B7C-BA19-4CDC2270E7FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BD9E34-1540-4B7C-BA19-4CDC2270E7FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C24E997-5AB2-46EE-8DB3-83CD61E48FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B6C24C5-2EA6-4CBE-82CB-463E4360BBD7}
+	EndGlobalSection
+EndGlobal
