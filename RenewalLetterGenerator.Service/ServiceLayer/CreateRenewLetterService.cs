@@ -8,10 +8,17 @@ namespace RenewalLetterGenerator.Service.ServiceLayer
     {
         private IFileReadAndWriteService _fileCreationService ;
 
+      
         public CreateRenewLetterFacadeService(IFileReadAndWriteService fileCreationService)
         {
             _fileCreationService = fileCreationService;
         }
+
+        /// <summary>
+        /// Calls all subsystem to create the renew letter
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns>Bool flag , with file generation</returns>
         public bool CreateRenewLetter(ViewModel viewModel)
         {
             // Read the Letter text rom the Content Folder

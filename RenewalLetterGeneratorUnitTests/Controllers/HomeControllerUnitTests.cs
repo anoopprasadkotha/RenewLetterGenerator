@@ -35,7 +35,7 @@ namespace RenewalLetterGeneratorUnitTests.Controllers
         [TestMethod]
         public void Upload_Filetype_NotCSv()
         {
-            //arrange
+            //Arrange
             string filePath = @"D:Dserver_logotransparent.jpeg";
             FileStream fileStream = new FileStream(filePath, FileMode.Open);
             Mock<FileStream> stream = new Mock<FileStream>();

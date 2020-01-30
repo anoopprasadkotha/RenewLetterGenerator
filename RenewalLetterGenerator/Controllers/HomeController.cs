@@ -16,13 +16,20 @@ namespace RenewalLetterGenerator.Controllers
             _processFile = processFile;
             
         }
-    
+        /// <summary>
+        /// Get of Upload method
+        /// </summary>
+        /// <returns>Provides user with upload capability</returns>
         public ActionResult Upload()
         {
 
             return View();
         }
-
+        /// <summary>
+        /// post method of upload journey
+        /// </summary>
+        /// <param name="upload"></param>
+        /// <returns>generates the files and also displays the list of valid members for whom files are generated</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Upload(HttpPostedFileBase upload)
@@ -48,15 +55,18 @@ namespace RenewalLetterGenerator.Controllers
                              success = _processFile.GenerateRenewalLetters(viewModel);
                         }
 
-                        var MemberDetails = new List<MemberDetailsModel>();
+                        var memberDetails = new List<MemberDetailsModel>();
 
+                        //filtering the data which was read from excel and displaying wether they are generated in last run
                         foreach (var member in viewModel)
                         {
 
-                            MemberDetails.Add(member.MemDetails);
+                            memberDetails.Add(member.MemDetails);
                         }
-                        ViewBag.AnyFileNewlyGenerated = MemberDetails.Any(x => x.IsGeneratedNow == true);
-                        return View(MemberDetails);
+
+                        //for displaying the message 
+                        ViewBag.AnyFileNewlyGenerated = memberDetails.Any(x => x.IsGeneratedNow == true);
+                        return View(memberDetails);
                     }
                     else
                     {

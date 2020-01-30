@@ -8,7 +8,7 @@ namespace RenewalLetterGenerator.Helper
     public class GenericHelper
     {
 
-
+        //constants which will be replaced by the values calculated
         #region Constants
         private const string Date = "{The current date}";
         private const string ToNameFieldValue = "{customer’s full name including Title}";
@@ -38,8 +38,12 @@ namespace RenewalLetterGenerator.Helper
             var totalAmount = RoundUp((creditCharge + annualPremium), 2);
 
             var firstMonthPremium = RoundUp(totalAmount - (11 * Convert.ToDouble(monthlyInst)), 2);
+
             var buffer = firstMonthPremium;
+
+            //logic for if the first month premium is less than avg premium
             firstMonthPremium = firstMonthPremium < Convert.ToDouble(monthlyInst) ? firstMonthPremium + .11 : firstMonthPremium;
+
             monthlyInst = buffer < Convert.ToDouble(monthlyInst) ? (Convert.ToDouble(monthlyInst) - .01).ToString() : monthlyInst;
 
             return new RenewalModel()

@@ -1,5 +1,8 @@
 ﻿namespace RenewalLetterGenerator.Models
 {
+    /// <summary>
+    /// Complete details of every member
+    /// </summary>
     public class ViewModel
     {
         /// <summary>
