@@ -25,8 +25,7 @@ namespace RenewalLetterGenerator.Service.ServiceLayer
             bool isSuccess=false;
             foreach (var Member in viewModel)
             {
-
-                isSuccess= _createRenewLetter.CreateRenewLetter(Member);
+                isSuccess = _createRenewLetter.CreateRenewLetter(Member);
 
                 Member.MemDetails.IsGeneratedNow = isSuccess;
             }
